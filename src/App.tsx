@@ -118,18 +118,21 @@ useEffect(() => {
 
 return (
   <div className="app-container">
-    {/* Top row - HGS logo */}
-    <div className="top_right_hgs_logo-container">
-      <ImageComponent />
-    </div>
+    <div className="header-container">
+      {/* Top row - HGS logo */}
+      <div className="top_right_hgs_logo-container">
+        <ImageComponent />
+      </div>
 
-    <div className="top_left_hgs_logo-container">
-      <ImageComponent />
-    </div>
+      {/* Top row - Logo and "Hello World" */}
+      <div className="logo_name-container">
+        <span>Welcome to Hubert</span>
+      </div>
 
-    {/* Top row - Logo and "Hello World" */}
-    <div className="logo_name-container">
-      <span>Welcome to Hubert</span>
+
+      <div className="top_left_hgs_logo-container">
+        <ImageComponent />
+      </div>
     </div>
 
     {/* Left side - List box */}
@@ -150,6 +153,10 @@ return (
 
     {/* Centered content */}
     <div className="content-container">
+
+      <div className="ans-box">
+        <QuestionAnswerBox content={answer} /> {/* Pass the answer state as a prop */}
+      </div>
       <div className="que-box">
         <QuestionTextBox
           value={question}
@@ -165,9 +172,7 @@ return (
         <Button onClick={handleSubmit}>Submit</Button> {/* Call handleSubmit on click */}
       </div>
 
-      <div className="ans-box">
-        <QuestionAnswerBox content={answer} /> {/* Pass the answer state as a prop */}
-      </div>
+   
     </div>
 
     {/* Right side - Logo */}

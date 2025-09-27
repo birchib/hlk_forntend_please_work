@@ -1,73 +1,53 @@
 /* Main container grid with two rows */
 .app-container {
   display: grid;
-  grid-template-rows: auto 1fr; /* First row for header, second for main content */
-  grid-template-columns: 1fr 3fr; /* Sidebar and content columns in the second row */
+  grid-template-rows: auto 1fr; /* header + content */
+  grid-template-columns: 1fr;   /* single column now */
+  height: 100vh;
+  background-color: rgba(0, 86, 147, 1);
   gap: 20px;
-  height: 100vh; /* Full height layout */
-  background-color: rgba(0, 86, 147, 1); /* Use RGBA */
+    /* ✅ remove any flex alignment pushing items down */
+  align-items: start; 
 }
 
-/* Top row for logo and "Hello World" */
-.logo_name-container {
-  grid-row: 1 / 2; /* Position in the first row */
-  grid-column: 4 / 0; /* Span across all columns */
+/* Header container */
+.header-container {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
   display: flex;
-  justify-content: center;
+  justify-content: space-between; /* left, center, right */
   align-items: center;
-  gap: 20px;
-  padding: 20px 0;
+  padding: 20px;
+}
+
+/* Left logo */
+.top_left_hgs_logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Center name/logo */
+.logo_name-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 50px;
   font-weight: bold;
   color: rgba(151, 152, 165, 255);
 }
 
-.hub_logo-container{
-  grid-row: 1 / span 2;
-  grid-column: 5;
+/* Right logo */
+.top_right_hgs_logo-container {
   display: flex;
-  justify-content: center;
   align-items: center;
-}
-
-.top_left_hgs_logo-container{
-  grid-row: 1 / 2;
-  grid-column: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.top_right_hgs_logo-container{
-  grid-row: 1 / 2;
-  grid-column: 5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-/* Sidebar */
-.list-container {
-  grid-row: 2 / 3; /* Position in the second row */
-  grid-column: 1 / 2; /* First column */
-  padding: 20px;
-  background-color: rgba(0, 86, 147, 1);
-  color: rgba(151, 152, 165, 255);  
-}
-
-/* This will target lists in the list container */
-.list-container ul {
-  list-style-type: none;
-  padding: 0; /* Removes default padding */
-  margin: 0; /* Removes default margin */
-  background-color: rgba(0, 176, 240, 255);
+  justify-content: flex-end;
 }
 
 /* Main content container */
 .content-container {
   grid-row: 2 / 3; /* Second row */
-  grid-column: 2 / 3; /* Second column */
+  grid-column: 1 / 2; /* Second column */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -77,10 +57,11 @@
 
 /* Styles for question and answer boxes */
 .que-box {
-  width: 100%; /* Full width of content container */
-  max-width: 1000px; /* Optional: max width constraint */
+  width: 85vw; /* Full width of content container */
+  max-width: none; /* Optional: max width constraint */
   height: 130px; /* Adjust height */
   padding: 20px;
+  margin: 0 auto;  
   font-size: 1.2rem;
   box-sizing: border-box; /* Ensures padding doesn’t add to width */
   background-color: #ffffff;
@@ -89,11 +70,12 @@
 }
 
 .que-text-box{
-  width: 100%; /* Full width of the container */
-  max-width: 1000px; /* Optional: set a max width */
+  width: 82vw; /* Full width of the container */
+  max-width: none; /* Optional: set a max width */
   max-height: 130px;
   height: 99%; /* Set desired height */
   padding: 20px;
+  margin: 0 auto;  
   font-size: 1.2rem;
   box-sizing: border-box; /* Include padding in width/height calculation */
   background-color: #ffffff;
@@ -103,9 +85,10 @@
 }
 
 .ans-box {
-  width: 100%; /* Full width of content container */
-  max-width: 1000px; /* Optional: max width constraint */
+  width: 85vw; /* Full width of content container */
+  max-width: none; /* Optional: max width constraint */
   height: 300px; /* Adjust height */
+  margin: 0 auto;  
   padding: 20px;
   font-size: 1.2rem;
   box-sizing: border-box; /* Ensures padding doesn’t add to width */
@@ -115,10 +98,11 @@
 }
 
 .AnswerBox {
-  width: 100%; /* Full width of the container */
-  max-width: 1000px; /* Optional: set a max width */
+  width: 82vw; /* Full width of the container */
+  max-width: none; /* Optional: set a max width */
   max-height: 300px; /* Set desired height */
   height: 99%;
+  margin: 0 auto;  
   padding: 20px;
   font-size: 1.2rem;
   box-sizing: border-box; /* Include padding in width/height calculation */

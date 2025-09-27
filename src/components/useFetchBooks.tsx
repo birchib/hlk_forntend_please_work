@@ -11,10 +11,11 @@ export const useFetchBooks = (question: string): Book[] => {  // Explicitly typi
       try {
         // Dynamically build the URL with the question parameter
         
-        const response = await fetch(`https://hlk-djangobackend.azurewebsites.net/api/persons/?search=${encodeURIComponent(question)}`);
+//        const response = await fetch(`https://hlk-djangobackend.azurewebsites.net/api/persons/?search=${encodeURIComponent(question)}`);
         // const url = `http://127.0.0.1:8000/api/persons/?search=${encodeURIComponent(question)}`;
         // console.log("Fetching URL:", url); // Log the constructed URL
         // const response = await fetch(url);
+        const response = await fetch(`https://hlk-djangobackend.azurewebsites.net/api/area_of_law/?question=${encodeURIComponent(question)}`);
         const data = await response.json();
         console.log("Fetched books:", data);
         setBooks(data);  // Assuming the API returns an array of Book objects

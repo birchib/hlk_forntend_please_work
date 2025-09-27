@@ -4,75 +4,75 @@ import QuestionAnswerBox from "./components/AnswerBox";
 import Button from "./components/Button";
 import ImageComponent from "./components/HGSLogo";
 // import HubertImageComponent from "./components/Hubert";
-import ListSupportGroup from "./components/ListSuportFunctions";
+// import ListSupportGroup from "./components/ListSuportFunctions";
 import QuestionTextBox from "./components/QuestionBox";
 import { useFetchBooks } from "./components/useFetchBooks";
 // import { Book } from './components/booktype';
 
 function App() {
-  const items = {
-    HR: [
-      "Absence",
-      "Management Hearings",
-      "Occupational Health",
-      "Special Leave",
-      "AWOL",
-      "Appeal Process",
-      "Flexible Working",
-      "Investigation",
-  ],
-  IT: [
-      "Onelogin",
-      "Multi-factor authentication",
-      "Sound issues on calls",
-      "Laptop is not working",
-      "Equipment delivery tracking",
-      "Sharepoint",
-      "Suspicious Email",
-      "Raising a ticket",
-  ],
-  Payroll: [
-      "HMRC",
-      "Payroll cut off dates",
-      "Incorrect Pay",
-      "Payslip",
-      "Pay rise",
-      "Advance",
-      "Wagestream",
-      "Contact details for payroll",
-      "Overtime",
-  ],
-  Quality: [
-      "Evaluation",
-      "System Issues",
-      "Profile",
-      "Password",
-      "Contact Us",
-      "Reporting",
-  ],
+//   const items = {
+//     HR: [
+//       "Absence",
+//       "Management Hearings",
+//       "Occupational Health",
+//       "Special Leave",
+//       "AWOL",
+//       "Appeal Process",
+//       "Flexible Working",
+//       "Investigation",
+//   ],
+//   IT: [
+//       "Onelogin",
+//       "Multi-factor authentication",
+//       "Sound issues on calls",
+//       "Laptop is not working",
+//       "Equipment delivery tracking",
+//       "Sharepoint",
+//       "Suspicious Email",
+//       "Raising a ticket",
+//   ],
+//   Payroll: [
+//       "HMRC",
+//       "Payroll cut off dates",
+//       "Incorrect Pay",
+//       "Payslip",
+//       "Pay rise",
+//       "Advance",
+//       "Wagestream",
+//       "Contact details for payroll",
+//       "Overtime",
+//   ],
+//   Quality: [
+//       "Evaluation",
+//       "System Issues",
+//       "Profile",
+//       "Password",
+//       "Contact Us",
+//       "Reporting",
+//   ],
 
-  Recruitment: [
-      "Refer a Friend",
-      "Social Media",
-      "Current Vacancies",
-      "Internal Application Process",
-      "Pre booked Annual leave",
-      "HGS Connect",
-      "Hourly Rate",
-      "Differing contract types",
-      "DBS check timeframe",
-      "background check",
-  ],
-  WFM: [
-      "Password Reset",
-      "Medical Leave",
-      "Annual Leave",
-      "Incorrect pay",
-      "Update IEX",
-      "Send Exceptions",
-      "Deduction Process",
-  ],
-};
+//   Recruitment: [
+//       "Refer a Friend",
+//       "Social Media",
+//       "Current Vacancies",
+//       "Internal Application Process",
+//       "Pre booked Annual leave",
+//       "HGS Connect",
+//       "Hourly Rate",
+//       "Differing contract types",
+//       "DBS check timeframe",
+//       "background check",
+//   ],
+//   WFM: [
+//       "Password Reset",
+//       "Medical Leave",
+//       "Annual Leave",
+//       "Incorrect pay",
+//       "Update IEX",
+//       "Send Exceptions",
+//       "Deduction Process",
+//   ],
+// };
 
 const [question, setQuestion] = useState(""); // State for the QuestionTextBox
 const [submittedQuestion, setSubmittedQuestion] = useState(""); // Track the submitted question
@@ -82,9 +82,9 @@ const [answer, setAnswer] = useState<string | JSX.Element[] | null>(null); // St
 const books = useFetchBooks(submittedQuestion);
 
 // Update question state when an item is selected
-const handleSelectedItem = (item: string) => {
-  setQuestion(item); // Update the question state
-};
+// const handleSelectedItem = (item: string) => {
+//   setQuestion(item); // Update the question state
+// };
 
 // Handle submission logic
 const handleSubmit = () => {
@@ -92,10 +92,10 @@ const handleSubmit = () => {
   setSubmittedQuestion(question); // Set the question for submission
 };
 
-const listboxhandleSubmit = () => {
-  console.log("Submit clicked with question:", question);
-  setSubmittedQuestion(question); // Set the submitted question which will trigger the API call
-};
+// const listboxhandleSubmit = () => {
+//   console.log("Submit clicked with question:", question);
+//   setSubmittedQuestion(question); // Set the submitted question which will trigger the API call
+// };
 
 // Whenever the submitted question changes, fetch books and update the answer
 useEffect(() => {
@@ -133,7 +133,7 @@ return (
     </div>
 
     {/* Left side - List box */}
-    <div className="list-container">
+    {/* <div className="list-container">
       <ListSupportGroup
         items={items}
         heading="Support Area"
@@ -146,7 +146,7 @@ return (
           // handleSubmit();
         }}
       />
-    </div>
+    </div> */}
 
     {/* Centered content */}
     <div className="content-container">

@@ -3,7 +3,7 @@ import "./App.css";
 import QuestionAnswerBox from "./components/AnswerBox";
 import Button from "./components/Button";
 import ImageComponent from "./components/HGSLogo";
-import HubertImageComponent from "./components/Hubert";
+// import HubertImageComponent from "./components/Hubert";
 import ListSupportGroup from "./components/ListSuportFunctions";
 import QuestionTextBox from "./components/QuestionBox";
 import { useFetchBooks } from "./components/useFetchBooks";
@@ -171,9 +171,9 @@ return (
     </div>
 
     {/* Right side - Logo */}
-    <div className="hub_logo-container">
+    {/* <div className="hub_logo-container">
       <HubertImageComponent />
-    </div>
+    </div> */}
   </div>
 );
 };

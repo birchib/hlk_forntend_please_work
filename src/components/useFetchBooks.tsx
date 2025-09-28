@@ -1,35 +1,72 @@
 import { useEffect, useState } from 'react';
 import { Book } from './booktype';
 
-export const useFetchBooks = (question: string): Book[] => {  // Explicitly typing the return value as Book[]
-  const [books, setBooks] = useState<Book[]>([]);  // Typing books as an array of Book objects
+// export const useFetchBooks = (question: string): Book[] => {  // Explicitly typing the return value as Book[]
+//   const [books, setBooks] = useState<Book[]>([]);  // Typing books as an array of Book objects
+
+//   useEffect(() => {
+//     if (question.trim() === "") return; // Avoid fetching when question is empty
+
+//     const fetchBooks = async () => {
+//       try {
+//         // Dynamically build the URL with the question parameter
+        
+// //        const response = await fetch(`https://hlk-djangobackend.azurewebsites.net/api/persons/?search=${encodeURIComponent(question)}`);
+//         // const url = `http://127.0.0.1:8000/api/persons/?search=${encodeURIComponent(question)}`;
+//         // console.log("Fetching URL:", url); // Log the constructed URL
+//         // const response = await fetch(url);
+//         const response = await fetch(`https://hlk-djangobackend.azurewebsites.net/api/area_of_law/?question=${encodeURIComponent(question)}`);
+//         const data = await response.json();
+//         console.log("Fetched books:", data);
+//         setBooks(data);  // Assuming the API returns an array of Book objects
+//       } catch (err) {
+//         console.error("Error fetching books:", err);
+//       }
+//     };
+
+//     fetchBooks(); // Trigger fetch when question changes
+//   }, [question]);  // Add `question` as a dependency to trigger the effect when it changes
+
+//   return books;  // Return the list of books
+// };
+
+
+export const useFetchBooks = (question: string): Book[] => {
+  const [books, setBooks] = useState<Book[]>([]);
 
   useEffect(() => {
-    if (question.trim() === "") return; // Avoid fetching when question is empty
+    if (!question.trim()) return;
 
     const fetchBooks = async () => {
       try {
-        // Dynamically build the URL with the question parameter
-        
-//        const response = await fetch(`https://hlk-djangobackend.azurewebsites.net/api/persons/?search=${encodeURIComponent(question)}`);
-        // const url = `http://127.0.0.1:8000/api/persons/?search=${encodeURIComponent(question)}`;
-        // console.log("Fetching URL:", url); // Log the constructed URL
-        // const response = await fetch(url);
-        const response = await fetch(`https://hlk-djangobackend.azurewebsites.net/api/area_of_law/?question=${encodeURIComponent(question)}`);
+        const response = await fetch(
+          `https://hlk-djangobackend.azurewebsites.net/api/area_of_law/?question=${encodeURIComponent(question)}`
+        );
         const data = await response.json();
-        console.log("Fetched books:", data);
-        setBooks(data);  // Assuming the API returns an array of Book objects
+        console.log("Fetched data:", data);
+
+        if (data.Response) {
+          const responseData = data.Response;
+          const bookArray: Book[] = [{
+            articale_used: responseData["Artical Used"] || "",
+            full_answer: responseData.Answer || "",
+            confidence_level: String(responseData.Confidence_level || 0)
+          }];
+          setBooks(bookArray);
+        } else {
+          setBooks([]);
+        }
       } catch (err) {
         console.error("Error fetching books:", err);
+        setBooks([]);
       }
     };
 
-    fetchBooks(); // Trigger fetch when question changes
-  }, [question]);  // Add `question` as a dependency to trigger the effect when it changes
+    fetchBooks();
+  }, [question]);
 
-  return books;  // Return the list of books
+  return books;
 };
-
 
 
 // import { useEffect, useState } from 'react'

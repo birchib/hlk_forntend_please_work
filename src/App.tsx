@@ -89,7 +89,8 @@ const books = useFetchBooks(submittedQuestion);
 // Handle submission logic
 const handleSubmit = () => {
   console.log("Submit clicked", question);
-  setSubmittedQuestion(question); // Set the question for submission
+  setAnswer([]); // Clear previous answers
+  setSubmittedQuestion(question);
 };
 
 // const listboxhandleSubmit = () => {

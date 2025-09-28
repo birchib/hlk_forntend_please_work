@@ -1,8 +1,8 @@
 // src/types/booktype.ts
 export interface Book {
-    id:string;
-    name: string;
-    age: string;
+    articale_used:string;
+    full_answer: string;
+    confidence_level: string;
   }
 
 

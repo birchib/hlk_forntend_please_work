@@ -104,9 +104,9 @@ useEffect(() => {
     if (books.length > 0) {
       // Format the answer to display the details of the books found
       const bookDetails = books.map((book, index) => (
-        <div key={book.id || index}>       
-          <h5>{book.name}</h5>
-          <p>Response: {book.age}</p>
+        <div key={book.articale_used || index}>       
+          <h5>{book.full_answer}</h5>
+          <p>Response: {book.confidence_level}</p>
         </div>
       ));
     setAnswer(bookDetails); // Set JSX elements in the answer state

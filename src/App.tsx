@@ -98,39 +98,25 @@ const handleSubmit = () => {
 // };
 
 // Whenever the submitted question changes, fetch books and update the answer
-// useEffect(() => {
-//   if (submittedQuestion && books) {
-//     console.log("Fetching books for:", submittedQuestion);
-//     if (books.length > 0) {
-//       // Format the answer to display the details of the books found
-//       const bookDetails = books.map((book, index) => (
-//         <div key={book.articale_used || index}>       
-//           <h5>{book.full_answer}</h5>
-//           <p>Response: {book.confidence_level}</p>
-//         </div>
-//       ));
-//     setAnswer(bookDetails); // Set JSX elements in the answer state
-//     } else {
-//       setAnswer("No books found.");
-//     }
-//   }
-// }, [submittedQuestion, books]); // Only run this effect when `submittedQuestion` or `books` changes
-
 useEffect(() => {
   if (submittedQuestion && books) {
+    console.log("Fetching books for:", submittedQuestion);
     if (books.length > 0) {
+      // Format the answer to display the details of the books found
       const bookDetails = books.map((book, index) => (
         <div key={book.articale_used || index}>       
+          <h3>{submittedQuestion}</h3>
           <h5>{book.full_answer}</h5>
-          <p>Response: {book.confidence_level}</p>
+          <p>Artical Used: {book.articale_used}</p>
+          <p>Confidence Level: {book.confidence_level}</p>
         </div>
       ));
-      setAnswer(bookDetails);
+    setAnswer(bookDetails); // Set JSX elements in the answer state
     } else {
-      setAnswer("No answer found.");
+      setAnswer("No books found.");
     }
   }
-}, [submittedQuestion, books]);
+}, [submittedQuestion, books]); // Only run this effect when `submittedQuestion` or `books` changes
 
 return (
   <div className="app-container">

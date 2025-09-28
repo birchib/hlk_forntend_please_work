@@ -1,5 +1,5 @@
-// import { useEffect, useState } from 'react';
-// import { Book } from './booktype';
+import { useEffect, useState } from 'react';
+import { Book } from './booktype';
 
 // export const useFetchBooks = (question: string): Book[] => {  // Explicitly typing the return value as Book[]
 //   const [books, setBooks] = useState<Book[]>([]);  // Typing books as an array of Book objects
@@ -31,14 +31,11 @@
 // };
 
 
-import { useEffect, useState } from 'react';
-import { Book } from './booktype';
-
-export const useFetchBooks = (question: string) => {
+export const useFetchBooks = (question: string): Book[] => {
   const [books, setBooks] = useState<Book[]>([]);
 
   useEffect(() => {
-    if (!question.trim()) return; // skip if empty
+    if (!question.trim()) return;
 
     const fetchBooks = async () => {
       try {
@@ -50,11 +47,12 @@ export const useFetchBooks = (question: string) => {
 
         if (data.Response) {
           const responseData = data.Response;
-          setBooks([{
+          const bookArray: Book[] = [{
             articale_used: responseData["Artical Used"] || "",
             full_answer: responseData.Answer || "",
             confidence_level: String(responseData.Confidence_level || 0)
-          }]);
+          }];
+          setBooks(bookArray);
         } else {
           setBooks([]);
         }
@@ -69,6 +67,7 @@ export const useFetchBooks = (question: string) => {
 
   return books;
 };
+
 
 // import { useEffect, useState } from 'react'
 

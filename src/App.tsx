@@ -18,7 +18,7 @@ const [answer, setAnswer] = useState<JSX.Element[]>([]);
 // Fetch books only when the question is submitted
 const books = useFetchBooks(submittedQuestion);
 const [loading, setLoading] = useState(false);
-const [historicAnswers, setHistoricAnswers] = useState<JSX.Element[]>([]);
+// const [historicAnswers, setHistoricAnswers] = useState<JSX.Element[]>([]);
 
 // Handle submission logic
 const handleSubmit = () => {
@@ -44,11 +44,14 @@ useEffect(() => {
   ));
 
   // Append to historicAnswers using functional update
-  setHistoricAnswers(prev => {
-    const updated = [...prev, ...newAnswer];
-    setAnswer(updated); // update answer only once, after API returned
-    return updated;
-  });
+  // setHistoricAnswers(prev => {
+  //   const updated = [...prev, ...newAnswer];
+  //   setAnswer(updated); // update answer only once, after API returned
+  //   return updated;
+  // });
+
+  const updatedAnswers = [...answer, ...newAnswer];
+setAnswer(updatedAnswers); // only update answer
 
   setLoading(false); // stop loading
 }, [books]); // only run when books actually change

@@ -1,0 +1,44 @@
+.be-container {
+    display: grid;
+    grid-template-areas: 
+        "header header"
+        "menu content";
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto auto;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.be-container .header {
+    grid-area: header;
+    text-align: center;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', 'sans-serif';
+    background: linear-gradient(#004aad, #cb6ce6);
+    background-color: #ffffff;
+}
+
+.be-container .menu {
+    grid-area: menu;
+    padding: 20px;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', 'sans-serif';
+    background: linear-gradient(#004aad, #cb6ce6);
+    background-color: #ffffff;
+}
+
+.be-container .content {
+    grid-area: content;
+    padding: 20px;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', 'sans-serif';
+    background: linear-gradient(#004aad, #cb6ce6);
+    background-color: #ffffff;
+}
+
+.the_bar {
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+}

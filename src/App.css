@@ -4,7 +4,7 @@
   grid-template-rows: auto 1fr; /* header + content */
   grid-template-columns: 1fr;   /* single column now */
   height: 100vh;
-  background-color: rgba(0, 86, 147, 1);
+  /* background-color: rgba(0, 86, 147, 1); */
   gap: 20px;
     /* ✅ remove any flex alignment pushing items down */
   align-items: start; 
@@ -44,72 +44,52 @@
   justify-content: flex-end;
 }
 
-/* Main content container */
-.content-container {
-  grid-row: 2 / 3; /* Second row */
-  grid-column: 1 / 2; /* Second column */
+/* Main wrapper */
+.qa-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 20px; /* space between Q and A cards */
   padding: 20px;
+  background-color: rgba(0, 86, 147, 1); /* same blue bg you had */
+  min-height: 100vh; /* full screen height */
+  box-sizing: border-box;
 }
 
-/* Styles for question and answer boxes */
-.que-box {
-  width: 85vw; /* Full width of content container */
-  max-width: none; /* Optional: max width constraint */
-  height: 130px; /* Adjust height */
-  padding: 20px;
-  margin: 0 auto;  
-  font-size: 1.2rem;
-  box-sizing: border-box; /* Ensures padding doesn’t add to width */
-  background-color: #ffffff;
-  border: 1px solid #100101; /* Optional: add border for visibility */
-  border-radius: 8px; /* Optional: round corners */
-}
-
-.que-text-box{
-  width: 82vw; /* Full width of the container */
-  max-width: none; /* Optional: set a max width */
-  max-height: 130px;
-  height: 99%; /* Set desired height */
-  padding: 20px;
-  margin: 0 auto;  
-  font-size: 1.2rem;
-  box-sizing: border-box; /* Include padding in width/height calculation */
-  background-color: #ffffff;
-  border: 1px solid #ddd; /* Optional: add border */
-  border-radius: 8px; /* Optional: round corners */
-  resize: none; /* Disable manual resizing */
-}
-
-.ans-box {
-  width: 85vw; /* Full width of content container */
-  max-width: none; /* Optional: max width constraint */
-  height: 300px; /* Adjust height */
-  margin: 0 auto;  
+/* Shared card style */
+.qa-card {
+  width: 100%;
+  max-width: 100%; /* keeps it from stretching too wide on big screens */
+  background-color: #fff;
+  border: 1px solid #100101;
+  border-radius: 8px;
   padding: 20px;
   font-size: 1.2rem;
-  box-sizing: border-box; /* Ensures padding doesn’t add to width */
-  background-color: #ffffff;
-  border: 1px solid #100101; /* Optional: add border for visibility */
-  border-radius: 8px; /* Optional: round corners */
+  box-sizing: border-box;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.15);
 }
 
+/* Question box (textarea) */
+.que-text-box {
+  width: 100%;
+  height: 120px;
+  resize: none;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+/* Answer box (scrollable) */
 .AnswerBox {
-  width: 82vw; /* Full width of the container */
-  max-width: none; /* Optional: set a max width */
-  max-height: 300px; /* Set desired height */
-  height: 99%;
-  margin: 0 auto;  
-  padding: 20px;
-  font-size: 1.2rem;
-  box-sizing: border-box; /* Include padding in width/height calculation */
-  background-color: #ffffff;
-  border: 1px solid #ddd; /* Optional: add border */
-  border-radius: 8px; /* Optional: round corners */
-  resize: none; /* Disable manual resizing */
+  width: 100%;
+  min-height: 200px;
+  max-height: 400px;
   overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px;
+  font-size: 1rem;
+  box-sizing: border-box;
 }
-

@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import QuestionAnswerBox from "./components/AnswerBox";
 import Button from "./components/Button";
-import ImageComponent from "./components/HGSLogo";
+// import ImageComponent from "./components/HGSLogo";
 // import HubertImageComponent from "./components/Hubert";
 // import ListSupportGroup from "./components/ListSuportFunctions";
 import QuestionTextBox from "./components/QuestionBox";
 import { useFetchBooks } from "./components/useFetchBooks";
 // import { Book } from './components/booktype';
+import BusinessExcellence from "./components/be";
 
 function App() {
 
@@ -25,6 +26,14 @@ const handleSubmit = () => {
   if (!question.trim()) return;
   setSubmittedQuestion(question);
   setLoading(true);
+};
+
+const handlehelpfullSubmit = () => {
+  if (answer.length === 0) {
+    alert("No answer available yet!");
+    return;
+  }
+  alert(`Marked as helpful for: "${submittedQuestion}"`);
 };
 
 // Whenever the submitted question changes, fetch books and update the answer
@@ -51,33 +60,20 @@ useEffect(() => {
   // });
 
   const updatedAnswers = [...answer, ...newAnswer];
-setAnswer(updatedAnswers); // only update answer
+  setAnswer(updatedAnswers); // only update answer
 
   setLoading(false); // stop loading
-}, [books]); // only run when books actually change
+  }, [books]); // only run when books actually change
+
 return (
-  <div className="app-container">
-    <div className="header-container">
-      {/* Top row - HGS logo */}
-      <div className="top_right_hgs_logo-container">
-        <ImageComponent />
-      </div>
-
-      {/* Top row - Logo and "Hello World" */}
-      <div className="logo_name-container">
-        <span>Welcome to Hubert</span>
-      </div>
-
-
-      <div className="top_left_hgs_logo-container">
-        <ImageComponent />
-      </div>
+  <div className="qa-container">
+    {/* Business Excellence Section */}
+    <div className="qa-card">
+      <BusinessExcellence />
     </div>
 
-    {/* Centered content */}
-    <div className="content-container">
-
-    <div className="ans-box">
+    {/* Answer card */}
+    <div className="qa-card">
       {loading ? (
         <div className="loading">Loading answer...</div>
       ) : (
@@ -85,26 +81,18 @@ return (
       )}
     </div>
 
-
-
-      <div className="que-box">
-        <QuestionTextBox
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)} // Update the state as user types
-          onEnter={() => {
-            console.log("Entered text:", question); // Log the text to the console
-            handleSubmit(); // Trigger the submit action when Enter is pressed
-          }}
-        />
+    {/* Question card */}
+    <div className="qa-card">
+      <QuestionTextBox
+        value={question}
+        onChange={(e) => setQuestion(e.target.value)}
+        onEnter={handleSubmit}
+      />
+      <div style={{ marginTop: "10px", textAlign: "right" }}>
+        <Button onClick={handleSubmit}>Submit</Button>
+        <Button onClick={handlehelpfullSubmit}>Helpfull</Button>
       </div>
-
-      <div className="sub-button">
-        <Button onClick={handleSubmit}>Submit</Button> {/* Call handleSubmit on click */}
-      </div>
-
-   
     </div>
-
   </div>
 );
 };
